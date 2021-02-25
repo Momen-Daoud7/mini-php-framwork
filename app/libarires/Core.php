@@ -7,14 +7,15 @@ class Core {
 
 	public function __construct() {
 		$url = $this->getUrl();
+		$current = $this->currentController;
 		//Looing in "controllers" for first value , ucword will capitalize the first letter
-		if(file_exists("../app/controllers/").ucwords($url).".php") {
+		if(file_exists("../app/controllers/").ucwords($url[0]).".php") {
 			//will set a new currentcontroller
 			$this->currentController = ucwords($url[0]);
 			unset($url[0]);
 		}
 		// Requireing new conroller
-		require_once "../app/controllers/".$this->currentController."php";
+		require_once "../app/controllers/".$this->currentController.".php";
 		$this->currentController = new $this->currentController;
 
 		//get the second part of the url
@@ -32,8 +33,7 @@ class Core {
 	}
 
 	public function getUrl() {
-
-		if($_GET['url']) {
+		if(isset($_GET['url'])) {
 			// remove the last / from url
 			$url = rtrim($_GET['url'] , "/");
 			// allows you ti filter variables as string/numbers
@@ -43,3 +43,4 @@ class Core {
 			return $url;
 		}
 	}
+}
