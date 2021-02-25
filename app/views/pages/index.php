@@ -1,3 +1,6 @@
 <?php 
-	echo $data['name'];
+	foreach ($data['users'] as $user) {
+		echo "Information: ".$user->user_name.$user_email.PHP_EOL;
+
+	}
  ?>

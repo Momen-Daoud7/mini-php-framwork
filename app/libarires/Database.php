@@ -41,7 +41,7 @@
 					$type =PDO::PARAM_NULL;
 					break;
 				default:
-					4type = PDO::PARAM_STR;
+					$type = PDO::PARAM_STR;
 					break;
 			}
 			 $this->statement->bindValues($parameter , $value , $type);
@@ -49,7 +49,7 @@
 
 		//execute 
 		public function execute() {
-			$this->statment->execute();
+			return $this->statment->execute();
 		}
 		// get results
 		public function resultSet() {
