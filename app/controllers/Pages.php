@@ -5,8 +5,8 @@
 			$this->userModel = $this->model("User");
 		}
 		public function index() {
-			$user = $this->userModel;
-			$data =  ["name" => "momen", "users" => $user];
+			$users = $this->userModel->getUsers();
+			$data =  ["name" => "momen", "users" => $users];
 			$this->view("pages/index" ,$data);
 		}
 		public function about() {

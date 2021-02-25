@@ -1,6 +1,7 @@
 <?php 
 	foreach ($data['users'] as $user) {
-		echo "Information: ".$user->user_name.$user_email.PHP_EOL;
+		echo "Information: ".$user->username.PHP_EOL;
+		echo "<br>";
 
 	}
  ?>

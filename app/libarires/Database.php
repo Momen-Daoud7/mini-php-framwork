@@ -16,7 +16,6 @@
 
 			try {
 				$this->dbHandler = new PDO($connection,$this->dbUser , $this->dbPass ,$options);
-
 			}catch(PDOException $e) {
 				$this->error = $e->getMessage();
 				echo $this->error;
@@ -29,8 +28,8 @@
 		}
 
 		// Bind values
-		public function bindValue($parameter , $value , $type=null) {
-			if(is_null($type)) {
+		public function bind($parameter , $value , $type=null) {
+			switch(is_null($type)) {
 				case is_int($value):
 					$type =PDO::PARAM_INT;
 					break;
@@ -49,7 +48,7 @@
 
 		//execute 
 		public function execute() {
-			return $this->statment->execute();
+			 return $this->statement->execute();
 		}
 		// get results
 		public function resultSet() {
@@ -63,7 +62,7 @@
 		}
 		// get rowcount
 		public function resultRow() {
-			$this->statement->rowCount();
+			return $this->statement->rowCount();
 		}
 
 
